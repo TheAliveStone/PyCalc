@@ -52,9 +52,39 @@ elif option == 2:
     elif unit == "pounds":
         weight = weight * 2.205
         print(f"You are {weight:.1f} kg. ")
-        
 elif option == 3:
-    pass
+    # Temperature conversion program
+    print("CONVERT YOUR TEMPERATURE")
+    unit = str(input("Enter the unit of your temperature ('C', 'F' or 'K'): "))
+    temperature = int(input("Enter the temperature: "))
+    finalUnit = str(input("Enter the unit you want to convert to ('C', 'F' or 'K'): "))
+    if finalUnit == "C":
+        if unit == "F":
+            finalTemperature = (temperature * (9/5)) + 32
+            print(f"{temperature:.1f} {unit} is {finalTemperature:.1f} {finalUnit}")
+        elif unit == "K":
+            finalTemperature = temperature + 273.15
+            print(f"{temperature:.1f} {unit} is {finalTemperature:.1f} {finalUnit}")
+        elif unit == "C":
+            print("They are the same unit! Try again")
+    elif finalUnit == "F":
+        if unit == "C":
+            finalTemperature = (temperature - 32) * (5/9)
+            print(f"{temperature:.1f} {unit} is {finalTemperature:.1f} {finalUnit}")
+        elif unit == "K":
+            finalTemperature = (temperature - 32) * (5/9) + 273.15
+            print(f"{temperature:.1f} {unit} is {finalTemperature:.1f} {finalUnit}")
+        elif unit == "F":
+            print("They are the same unit! Try again")
+    elif finalUnit == "K":
+        if unit == "F":
+            finalTemperature = (temperature - 273.15) * (9/5) + 32
+            print(f"{temperature:.1f} {unit} is {finalTemperature:.1f} {finalUnit}")
+        elif unit == "C":
+            finalTemperature = temperature - 273.16
+            print(f"{temperature:.1f} {unit} is {finalTemperature:.1f} {finalUnit}")
+        elif unit == "K":
+            print("They are the same unit! Try again")
 elif option == 4:
     pass
 else:
