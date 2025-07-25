@@ -35,7 +35,24 @@ if option == 1:
         except Exception as e:
             print(f"Error: {e}") 
 elif option == 2:
-    pass
+    # Weight conversion program
+    print("CONVERT YOUR WEIGHT!")
+    weight = int(input("Enter your weight (in kilos or pounds): "))
+    unit = str(input("Kilos or pounds (type 'kilos' or 'pounds'): "))
+    if unit == "kilos":
+        ounceChoice = str(input("Do you want to see pounds and ounces? (Y or N): "))
+        if ounceChoice == "Y":
+            weight = weight / 2.2046226218
+            pounds = int(weight)
+            ounces = (weight - pounds) * 16
+            print(f"You are {weight:.1f} pounds and {ounces:.1f} ounces.")
+        elif ounceChoice == "N":
+            weight = weight / 2.205
+            print(f"You are {weight:.1f} kg. ")
+    elif unit == "pounds":
+        weight = weight * 2.205
+        print(f"You are {weight:.1f} kg. ")
+        
 elif option == 3:
     pass
 elif option == 4:
