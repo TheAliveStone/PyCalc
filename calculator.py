@@ -1,13 +1,7 @@
 import math
+import operator
 
-print("Select an option:")
-print("1. Calculator")
-print("2. Weight Conversion")
-print("3. Temperature Conversion")
-print("4. Compound Interest Calculator")
-option = int(input())
-
-if option == 1:
+def calculator():
     # Calculator project
     while True:
         operator = input("Enter an operator (+, -, *, /, ^, sqrt): ")
@@ -34,7 +28,7 @@ if option == 1:
             print(f"The answer is: {ans}")
         except Exception as e:
             print(f"Error: {e}") 
-elif option == 2:
+def weight_conversion():
     # Weight conversion program
     print("CONVERT YOUR WEIGHT!")
     weight = int(input("Enter your weight (in kilos or pounds): "))
@@ -52,7 +46,7 @@ elif option == 2:
     elif unit == "pounds":
         weight = weight * 2.205
         print(f"You are {weight:.1f} kg. ")
-elif option == 3:
+def temperature_conversion():
     # Temperature conversion program
     print("CONVERT YOUR TEMPERATURE")
     unit = str(input("Enter the unit of your temperature ('C', 'F' or 'K'): "))
@@ -84,9 +78,18 @@ elif option == 3:
             finalTemperature = temperature - 273.16
             print(f"{temperature:.1f} {unit} is {finalTemperature:.1f} {finalUnit}")
         elif unit == "K":
-            print("They are the same unit! Try again")
-elif option == 4:
-    pass
-else:
+            print("They are the same unit! Try again")  
+def compound_interest():
     pass
 
+def main():
+    MENU = {
+        '1': calculator,
+        '2': weight_conversion,
+        '3': temperature_conversion,
+        '4': compound_interest
+    }
+    option = int(input())
+
+if __name__ == "__main__":
+    main()
