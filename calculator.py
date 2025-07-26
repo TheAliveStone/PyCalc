@@ -1,5 +1,4 @@
 import math
-import operator
 
 def calculator():
     # Calculator project
@@ -48,48 +47,56 @@ def weight_conversion():
         print(f"You are {weight:.1f} kg. ")
 def temperature_conversion():
     # Temperature conversion program
+    def c_to_f(c): return (c * 9/5) + 32
+    def f_to_c(f): return (f - 32) * 5/9
+    def c_to_k(c): return c + 273.15
+    def k_to_c(k): return k - 273.15
+    def f_to_k(f): return (f - 32) * 5/9 + 273.15
+    def k_to_f(k): return (k - 273.15) * 9/5 / 32
     print("CONVERT YOUR TEMPERATURE")
-    unit = str(input("Enter the unit of your temperature ('C', 'F' or 'K'): "))
-    temperature = int(input("Enter the temperature: "))
-    finalUnit = str(input("Enter the unit you want to convert to ('C', 'F' or 'K'): "))
-    if finalUnit == "C":
-        if unit == "F":
-            finalTemperature = (temperature * (9/5)) + 32
-            print(f"{temperature:.1f} {unit} is {finalTemperature:.1f} {finalUnit}")
-        elif unit == "K":
-            finalTemperature = temperature + 273.15
-            print(f"{temperature:.1f} {unit} is {finalTemperature:.1f} {finalUnit}")
-        elif unit == "C":
-            print("They are the same unit! Try again")
-    elif finalUnit == "F":
-        if unit == "C":
-            finalTemperature = (temperature - 32) * (5/9)
-            print(f"{temperature:.1f} {unit} is {finalTemperature:.1f} {finalUnit}")
-        elif unit == "K":
-            finalTemperature = (temperature - 32) * (5/9) + 273.15
-            print(f"{temperature:.1f} {unit} is {finalTemperature:.1f} {finalUnit}")
-        elif unit == "F":
-            print("They are the same unit! Try again")
-    elif finalUnit == "K":
-        if unit == "F":
-            finalTemperature = (temperature - 273.15) * (9/5) + 32
-            print(f"{temperature:.1f} {unit} is {finalTemperature:.1f} {finalUnit}")
-        elif unit == "C":
-            finalTemperature = temperature - 273.16
-            print(f"{temperature:.1f} {unit} is {finalTemperature:.1f} {finalUnit}")
-        elif unit == "K":
-            print("They are the same unit! Try again")  
-def compound_interest():
-    pass
+    unit = str(input("Enter the unit of your temperature ('C', 'F' or 'K'): ")).upper()
+    temp = int(input("Enter the temperature: "))
+    finalUnit = str(input("Enter the unit you want to convert to ('C', 'F' or 'K'): ")).upper()
+    if unit == finalUnit:
+        print(f"Temperature stays the same: {temp}{finalUnit}")
+    elif unit == "C" and finalUnit == "F":
+        print(f"Result: {c_to_f(temp):.2f}°F")
+    elif unit == "F" and finalUnit == "C":
+        print(f"Result: {f_to_c(temp):.2f}°C")
+    elif unit == "C" and finalUnit == "K":
+        print(f"Result: {c_to_k(temp):.2f}K")
+    elif unit == "K" and finalUnit == "C":
+        print(f"Result: {k_to_c(temp):.2f}°C")
+    else:
+        print("This conversion is not implemented yet.")
+    
+def compound_interest_calculator():
+    p = float(input("Enter your starting amount of money: "))
+    r = float(input("Enter annual interest rate (as %): ")) / 100
+    n = int(input("Number of times interest is compounded per year: "))
+    t = float(input("Number of years: "))
+
+    amount = p * (1 + r/n) ** (n*t)
+    print(f"After {t:.2f} years, you would have: £{amount:.2f}")
 
 def main():
-    MENU = {
-        '1': calculator,
-        '2': weight_conversion,
-        '3': temperature_conversion,
-        '4': compound_interest
-    }
-    option = int(input())
+    print("Select an option:")
+    print("1. Calculator")
+    print("2. Weight Conversion")
+    print("3. Temperature Conversion")
+    print("4. Compound Interest Calculator")
+
+    option = input("Enter your choice: ")
+    if option == "1":
+        calculator()
+    elif option == "2":
+        weight_conversion()
+    elif option == "3":
+        temperature_conversion()
+    elif option == "4":
+        compound_interest_calculator()
+    else:
+        print("Invalid option.")
 
 if __name__ == "__main__":
     main()
