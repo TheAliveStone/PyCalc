@@ -80,13 +80,29 @@ def compound_interest_calculator():
     print(f"After {t:.2f} years, you would have: £{amount:.2f}")
 
 def main():
-    print("Select an option:")
-    print("1. Calculator")
-    print("2. Weight Conversion")
-    print("3. Temperature Conversion")
-    print("4. Compound Interest Calculator")
+    print("""
+    
+░█████████               ░██████             ░██            
+░██     ░██             ░██   ░██            ░██            
+░██     ░██ ░██    ░██ ░██         ░██████   ░██  ░███████  
+░█████████  ░██    ░██ ░██              ░██  ░██ ░██    ░██ 
+░██         ░██    ░██ ░██         ░███████  ░██ ░██        
+░██         ░██   ░███  ░██   ░██ ░██   ░██  ░██ ░██    ░██ 
+░██          ░█████░██   ░██████   ░█████░██ ░██  ░███████  
+                   ░██                                      
+             ░███████                                       
+                                                            """)
+    print("╭────────────────────────────────────────────╮")
+    print("│             CALCULATION CONSOLE            │")
+    print("│      Choose a tool to crunch the numbers   │")
+    print("├────────────────────────────────────────────┤")
+    print("│  [1]  Basic calculator                     │")
+    print("│  [2]  Weight conversion                    │")
+    print("│  [3]  Temperature conversion               │")
+    print("│  [4]  Compound interest calculator         │")
+    print("╰────────────────────────────────────────────╯")
 
-    option = input("Enter your choice: ")
+    option = input("\n⌁ Enter a menu number: ")
     if option == "1":
         calculator()
     elif option == "2":
